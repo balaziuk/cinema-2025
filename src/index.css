@@ -1,68 +1,225 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary-color: #ff4081;
+  --secondary-color: #7c4dff;
+  --background-color: #121212;
+  --card-background: #1e1e1e;
+  --text-color: #ffffff;
+  --light-text: #b3b3b3;
+  --border-color: #333333;
+  --hover-color: #2c2c2c;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-header {
+  position: relative;
+  height: 300px;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+  overflow: hidden;
+  border-radius: 15px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/cinema-header.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4);
+  z-index: -1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.header-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  width: 100%;
+}
+
+.app-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.app-footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border-color);
+  color: var(--light-text);
+}
+
+.search-container {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 15px 25px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--primary-color);
+  border-color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 18px;
+  color: var(--light-text);
+  padding: 40px 0;
+}
+
+.movie-card {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.movie-card:hover .movie-poster {
+  transform: scale(1.05);
+}
+
+.movie-info {
+  padding: 20px;
+}
+
+.movie-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.movie-description {
+  font-size: 14px;
+  color: var(--light-text);
+  margin-bottom: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-height: 4.5em;
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.movie-genre,
+.movie-showtime {
+  font-size: 14px;
+  color: var(--light-text);
+  display: block;
+}
+
+.movie-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.book-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background-color 0.3s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.book-button:hover {
+  background-color: #e91e63;
 }
+
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #ffc107;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.genre-badge {
+  display: inline-block;
+  background-color: rgba(124, 77, 255, 0.2);
+  color: var(--secondary-color);
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
