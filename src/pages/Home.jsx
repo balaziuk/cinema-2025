@@ -1,6 +1,6 @@
 import React from "react";
 import MovieList from "../components/MovieList";
-import moviesData from '..movies.js'
+import moviesData from "../data/movies"; // Імпортуємо дані фільмів
 
 function Home() {
     return (
