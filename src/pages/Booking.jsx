@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CinemaHall from '../components/CinemaHall';
 import moviesData from '../data/movies';
+import '../bookingStyles.css'
 
 function Booking() {
   const { id } = useParams();
@@ -38,10 +39,10 @@ function Booking() {
         />
         <div className="movie-header-details">
           <h1>{movie.title}</h1>
-          <p className="genre-badge">{movie.genre}</p>
+          <p className="genre-badge-b">{movie.genre}</p>
           <p className="showtime">Сеанс: {movie.showtime}</p>
         </div>
-        <button className="back-button" onClick={() => navigate('/')}>
+        <button className="back-to-list-button" onClick={() => navigate('/')}>
           &larr; Назад до списку
         </button>
       </div>
