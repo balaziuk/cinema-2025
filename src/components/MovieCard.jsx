@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function MovieCard({ movie }) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
   
   // для додавання/видалення фільму в обране
   const toggleFavorite = () => {
@@ -31,8 +33,8 @@ function MovieCard({ movie }) {
   };
   
   const handleBooking = () => {
-    alert(`Бронювання фільму: ${movie.title} на сеанс ${movie.showtime}`);
-  };
+    navigate(`/booking/${movie.id}`);
+  }
 
   return (
     <div className="movie-card">
