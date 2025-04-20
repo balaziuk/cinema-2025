@@ -124,6 +124,13 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.movie-list .movie-card {
+  animation-delay: calc(var(--item-index, 0) * 0.05s);
 }
 
 .movie-card:hover {
@@ -289,5 +296,17 @@ body {
 
   .app-title {
     font-size: 1.8rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

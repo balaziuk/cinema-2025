@@ -4,11 +4,13 @@ import MovieCard from './MovieCard';
 function MovieList({ movies }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredMovies, setFilteredMovies] = useState(movies);
+  const [animationKey, setAnimationKey] = useState(0);
   
   useEffect(() => {
     const results = movies.filter(movie =>
       movie.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    setAnimationKey(prev => prev + 1);
     setFilteredMovies(results);
   }, [searchTerm, movies]);
 
@@ -24,10 +26,12 @@ function MovieList({ movies }) {
         />
       </div>
       
-      <div className="movie-list">
+      <div className="movie-list" key={animationKey}>
         {filteredMovies.length > 0 ? (
-          filteredMovies.map(movie => (
-            <MovieCard key={movie.id} movie={movie} />
+          filteredMovies.map((movie, index) => (
+            <div key={movie.id} style={{"--item-index": index}}>
+              <MovieCard movie={movie} />
+            </div>
           ))
         ) : (
           <p className="no-results">Фільмів не знайдено</p>

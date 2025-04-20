@@ -153,13 +153,13 @@ ul {
 
 .seats-container {
     display: grid;
-    gap: 10px;
+    gap: 12px;
 }
 
 .seat-row {
     display: grid;
     grid-template-columns: 30px repeat(10, 1fr);
-    gap: 5px;
+    gap: 8px;
 }
 
 .row-number {
