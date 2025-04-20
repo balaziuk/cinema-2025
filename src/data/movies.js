@@ -48,7 +48,7 @@ const movies = [
   {
     id: 6,
     title: "Темний лицар",
-    posterUrl: "/images/6.jpg",
+    posterUrl: "/images/12.jpg",
     description: "Бетмен протистоїть новому супротивнику - Джокеру, який тероризує Готем",
     genre: "Супергерої",
     showtime: "19:00, 17 квітня 2025",

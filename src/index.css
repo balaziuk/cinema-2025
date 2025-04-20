@@ -69,14 +69,6 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.app-footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 20px 0;
-  border-top: 1px solid var(--border-color);
-  color: var(--light-text);
-}
-
 .search-container {
   width: 80%;
   max-width: 600px;

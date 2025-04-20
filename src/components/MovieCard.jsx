@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function MovieCard({ movie }) {
   const [isFavorite, setIsFavorite] = useState(false);
   
+  // для додавання/видалення фільму в обране
   const toggleFavorite = () => {
     setIsFavorite(prev => !prev);
   };
@@ -11,7 +12,7 @@ function MovieCard({ movie }) {
   const renderStars = (rating) => {
     const stars = [];
     const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
+    const hasHalfStar = rating % 1 >= 0.5; //чи дробова частина достатньо велика для половини зірки
     
     for (let i = 0; i < fullStars; i++) {
       stars.push(<span key={`full-${i}`}>★</span>);
@@ -41,7 +42,7 @@ function MovieCard({ movie }) {
           alt={movie.title} 
           className="movie-poster" 
           onError={(e) => {
-            e.target.src = '/images/placeholder.jpg'; // Запасне зображення, якщо основне не завантажилось
+            e.target.src = '/images/placeholder.jpg'; 
           }}
         />
       </div>
