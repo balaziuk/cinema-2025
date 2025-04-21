@@ -28,7 +28,6 @@ function CinemaHall({ movieTitle }) {
             if (seat.id === seatId && seat.status !== 'occupied') {
                 const newStatus = seat.status === 'available' ? 'selected' : 'available';
                 
-                // Оновлюємо список вибраних місць
                 if (newStatus === 'selected') {
                     setSelectedSeats(prev => [...prev, seat]);
                 } else {

@@ -10,13 +10,11 @@ function Booking() {
   const [movie, setMovie] = useState(null);
   
   useEffect(() => {
-    // Знаходимо фільм за id
     const selectedMovie = moviesData.find(m => m.id === parseInt(id) || m.id === id);
     
     if (selectedMovie) {
       setMovie(selectedMovie);
     } else {
-      // Якщо фільм не знайдено повертаємося на головну
       alert('Фільм не знайдено');
       navigate('/');
     }
