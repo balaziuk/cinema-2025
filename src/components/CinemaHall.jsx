@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import BookingService from "../services/BookingService";
 import BookingForm from "./BookingForm";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CinemaHall({ movieId, movieTitle }) {
     const rows = 8;
@@ -57,7 +59,7 @@ function CinemaHall({ movieId, movieTitle }) {
 
     const confirmBooking = () => {
       if (selectedSeats.length === 0) {
-        alert("Будь ласка, виберіть хоча б одне місце для бронювання.");
+        toast.error("Будь ласка, виберіть хоча б одне місце для бронювання.");
         return;
       }
       setShowBookingForm(true);
@@ -85,7 +87,7 @@ function CinemaHall({ movieId, movieTitle }) {
       const success = BookingService.saveBooking(movieId, booking);
 
       if (success) {
-        alert("Бронювання успішно збережено!");
+        toast.info("Бронювання успішно збережено!");
         
         const updatedSeats = seats.map(seat => {
           if (seat.status === 'selected') {
@@ -98,7 +100,7 @@ function CinemaHall({ movieId, movieTitle }) {
         setSelectedSeats([]);
         setShowBookingForm(false);
       } else {
-        alert("Помилка під час збереження бронювання.");
+        toast.error("Помилка під час збереження бронювання.");
       }
     };
   
@@ -108,6 +110,19 @@ function CinemaHall({ movieId, movieTitle }) {
     
     return (
         <div className="cinema-hall">
+            <ToastContainer 
+            position="bottom-left"
+            autoClose={5000}
+            theme="dark"
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            style={{ zIndex: 9999 }} 
+            />
             <h2 className="hall-title">Вибір місць для фільму "{movieTitle}"</h2>
             
             <div className="screen-container">
