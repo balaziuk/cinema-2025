@@ -5,9 +5,9 @@ import moviesData from '../data/movies';
 import '../bookingStyles.css'
 
 function Booking() {
-  const { id } = useParams();
+  const { id } = useParams(); // id фільму з URL
   const navigate = useNavigate();
-  const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState(null);// для інфи про фільм
   
   useEffect(() => {
     const selectedMovie = moviesData.find(m => m.id === parseInt(id) || m.id === id);

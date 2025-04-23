@@ -7,7 +7,7 @@ function BookingForm({ onSubmit, onCancel, selectedSeats }) {
         email: ""
     });
     const [errors, setErrors] = useState({});
-    
+    //для зніни зачень
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUserData({

@@ -1,4 +1,5 @@
 class BookingService {
+  //всі бронювання, пов'язані з конкретним фільмом.
   static getBookingsByMovieId(movieId) {
     try {
       const bookings = localStorage.getItem(`bookings_${movieId}`);
@@ -20,7 +21,7 @@ class BookingService {
       return false;
     }
   }
-
+  //Повертає всі зайняті місця для певного фільму
   static getOccupiedSeatsByMovieId(movieId) {
     const bookings = this.getBookingsByMovieId(movieId);
     return bookings.reduce((seats, booking) => {
